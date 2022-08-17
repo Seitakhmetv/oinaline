@@ -1,0 +1,36 @@
+<div class="games">  
+  <ng-container *ngFor="let game of games">
+    <div class="game" (click)="openGameDetails(game.id)">
+      <div class="game-thumb-container">
+        <img
+          *ngIf="game.screenshots[0].url"
+          src="{{ game.screenshots[0].url }}"
+          alt="thumbnail"
+          class="game-thumbnail"
+        />
+      <p *ngIf="!game.screenshots[0].url">No image</p>
+      </div>
+      <div class="game-description">
+        <p class="game-name">{{ game.title }}</p>
+        <div class="game-platforms">
+          <img
+            *ngFor="let gamePlatform of game.platforms"            
+            class="game-platform"
+            src="/assets/images/platforms/{{ gamePlatform.title}}.svg"
+            alt="{{ gamePlatform.title }}"
+          />
+        </div>
+      </div>
+    </div>
+  </ng-container> 
+</div>
+
+<!-- <div class="pagination">
+  <div class="pagination-nav">
+    <button class="pagination-nav-prev" (click)="prevPage()">
+      <fa-icon [icon]="faArrowLeft"></fa-icon>
+    </button>
+    <button class="pagination-nav-next" (click)="nextPage()">
+      <fa-icon [icon]="faArrowRight"></fa-icon>
+    </button>
+  </div> -->

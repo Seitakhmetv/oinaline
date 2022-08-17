@@ -1,0 +1,40 @@
+<div class="game-tabs">
+  <mat-tab-group mat-align-tabs="start" backgroundColor="primary">
+    <mat-tab label="About">
+      <p *ngIf="game.platforms.length" class="game-tabs-par">
+        Platforms:
+        <span *ngFor="let game of game.platforms let last = last"
+          >{{ game.title }}<span *ngIf="!last">, </span></span
+        >
+      </p>
+      <p *ngIf="game.publishers?.length" class="game-tabs-par">
+        Publishers:
+        <span *ngFor="let publisher of game.publishers; let last = last"
+          >{{ publisher.title }}<span *ngIf="!last">, </span></span
+        >
+      </p>
+      <div class="game-description" [innerHTML]="game.description"></div>
+    </mat-tab>
+
+
+    <mat-tab label="Screenshots" *ngIf="game.screenshots?.length">
+      <img
+        class="game-screenshot"
+        *ngFor="let screenshot of game.screenshots"
+        src="{{ screenshot.url }}"
+        alt="screenshot"
+      />
+    </mat-tab>
+
+    
+    <mat-tab label="Trailers" *ngIf="game.trailer">
+      <video
+        class="game-trailer"
+        controls
+      >
+        <source src="{{ game.trailer }}" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </mat-tab>
+  </mat-tab-group>
+</div>
